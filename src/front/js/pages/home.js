@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from 'react-router-dom';
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -72,11 +71,11 @@ export const Home = () => {
 	}
 
 	return (
-		<div className="text-center mt-5">
+		<div className="mt-5 contenedor_forms">
 
-			<div>
+			<div className="formulario">
 				<form onSubmit={handleSignUp}>
-					<legend>Sign up</legend>
+					<legend className="fw-bold">Sign up</legend>
 
 					<div className="m-3">
 						<label htmlFor="email">Email:</label>
@@ -97,14 +96,14 @@ export const Home = () => {
 					</div>
 
 					<input
-						className="btn btn-success"
+						className="btn btn-warning"
 						type="submit" />
 				</form>
 			</div>
 
-			<div className="mt-5">
+			<div className="formulario">
 				<form onSubmit={handleLogin}>
-					<legend>Login</legend>
+					<legend className="fw-bold">Login</legend>
 
 					<div className="m-3">
 						<label htmlFor="email">Email:</label>
@@ -125,7 +124,7 @@ export const Home = () => {
 					</div>
 
 					<input
-						className="btn btn-warinig"
+						className="btn btn-warning"
 						type="submit" />
 				</form>
 			</div>

@@ -1,3 +1,31 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+img {
+    width: 300px;
+}
+
+p {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.contenedor_forms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario {
+    color: white;
+    background-color: rgb(136, 112, 158);
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    margin: 10px;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+}

@@ -2,10 +2,16 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
+    
+    favorites = db.relationship('Favorite', backref='user', lazy=True)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -14,6 +20,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "favorites": [favorite.animal.serialize() for favorite in self.favorites]
         }
 
 class Animal(db.Model):
@@ -21,7 +28,6 @@ class Animal(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     type = db.Column(db.String(120), unique=False, nullable=False)
     url = db.Column(db.String(80), unique=False, nullable=False)
-    
 
     def __repr__(self):
         return f'<Animal {self.name}>'
@@ -40,9 +46,9 @@ class Favorite(db.Model):
     animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
 
     animal = db.relationship('Animal', backref='favorites', lazy=True)
-    user = db.relationship('User', backref='favorites', lazy=True)
 
     def __repr__(self):
         return f'<Favorite {self.id}>'
+
 
 
