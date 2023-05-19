@@ -64,13 +64,12 @@ def login():
 #------------------------------- PRIVATE USERS -------------------------------
 
 @api.route("/private", methods=["GET"])
-#Verifica si tienes un token de acceso
-@jwt_required() 
-
+@jwt_required()
 def protected():
-    #Accede a la identidad del usuario actual con get_jwt_identity.
-    response_body= {
+    # Accede a la identidad del usuario actual con get_jwt_identity.
+    current_user = get_jwt_identity()
+    response_body = {
         "msg": "Permission granted",
-        "user": get_jwt_identity()
+        "user": current_user
     }
     return jsonify(response_body), 200
